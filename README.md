@@ -5,8 +5,6 @@ A demo React.js application for Drag Selector Libs ([@mornya/drag-selector-libs]
 
 ## About
 DEMO: [https://mornya.github.io/react-demo-drag-selector/](https://mornya.github.io/react-demo-drag-selector/)
-<br>
 
 ## License
 해당 프로젝트의 [LICENSE](LICENSE) 파일 참조.
-<br><br>
