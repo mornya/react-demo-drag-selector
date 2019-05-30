@@ -1,0 +1,43 @@
+{
+  "extends": ["tslint:latest", "tslint-react"],
+  "rules": {
+    "arrow-parens": false,
+    "callable-types": false,
+    "comment-format": false,
+    "interface-name": false,
+    "max-classes-per-file": false,
+    "max-line-length": false,
+    "member-access": false,
+    "member-ordering": false,
+    "new-parens": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-empty": false,
+    "no-conditional-assignment": true,
+    "no-consecutive-blank-lines": false,
+    "no-console": {
+      "severity": "warning",
+      "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+    },
+    "no-namespace": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "prefer-for-of": false,
+    "quotemark": false,
+    "semicolon": false,
+    "space-before-function-paren": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never",
+        "esSpecCompliant": true
+      }
+    ],
+    // override tslint-react rules
+    "jsx-no-multiline-js": false,
+    "jsx-self-close": true,
+    "jsx-space-before-trailing-slash": false
+  },
+  "jsRules": true
+}

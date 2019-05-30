@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+$--color-primary: #61dafb;
+$--color-dark: #32363d;
+$--color-bg: #282c33;
+
+html, body {
+  background-color: $--color-bg;
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  margin: 0 2px;
+  padding: 4px 8px;
+  border: 1px solid $--color-primary;
+  border-radius: 8px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: rgba($--color-primary, .6);
+}
+
+button {
+  margin: 5px;
+  padding: 8px 16px;
+  background-color: rgba($--color-primary, .3);
+  border: 1px solid $--color-primary;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+
+  &:hover {
+    background-color: rgba($--color-primary, .4);
+    cursor: pointer;
+  }
+}
+
+a:link, a:hover, a:visited {
+  font-size: .7em;
+  color: $--color-primary;
+}
+
+/* Common blind text class */
+.blind {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0;
+  background: none;
+  font-size: 0;
+  line-height: 0;
+}
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-wrapper {
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: -70vh;
+    right: -55vw;
+    width: 160vw;
+    height: 160vh;
+    background: url("./assets/logo.svg") 50% 50% no-repeat;
+    -webkit-animation: app-logo-spin infinite 60s linear;
+    animation: app-logo-spin infinite 60s linear;
+  }
+
+  nav {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    height: 80px;
+    > p {
+      margin: 4px;
+      line-height: 1;
+      font-size: 10px;
+      color: #61dafb;
+    }
+  }
+
+  section {
+    margin-top: 80px;
+    min-height: 100vh;
+
+    .drag-selector {
+      margin-bottom: 40px;
+
+      .drag-selector-item {
+        position: relative;
+
+        .item-flag {
+          opacity: 0;
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          transition: all ease-in-out 300ms;
+
+          &.on {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #fff;
+
+    & > * {
+      position: relative;
+      z-index: 0;
+    }
+    & > h1 {
+      margin: 0;
+      line-height: 1;
+      font-size: 12vw;
+    }
+    & > p {
+      margin: 4px 0;
+      line-height: 1;
+      font-size: 0.9em;
+    }
+    & > i {
+      margin: 10px 0;
+      font-size: 0.5em;
+      color: rgba(#fff, .6);
+    }
+  }
+
+  footer {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 11px;
+    color: rgba(#999, .3);
+  }
+}
