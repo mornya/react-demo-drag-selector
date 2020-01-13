@@ -1,10 +1,11 @@
 {
   "name": "react-demo-drag-selector",
   "version": "0.1.0",
-  "description": "A demo React.js application for Drag Selector Libs (@mornya/drag-selector-libs).",
+  "description": "A demo React.js application for drag selector.",
   "keywords": [
     "mornya",
-    "react-vessel",
+    "react",
+    "vessel",
     "demo",
     "drag-selector"
   ],
@@ -17,34 +18,37 @@
   "types": "./types/index.d.ts",
   "scripts": {
     "login": "react-vessel login",
-    "lint": "react-vessel lint all",
+    "lint": "react-vessel lint",
+    "lint:all": "react-vessel lint all",
     "clean": "react-vessel clean",
     "build": "react-vessel build",
     "start": "react-vessel start",
+    "serve": "react-vessel start",
+    "dev": "react-vessel dev",
     "test": "react-vessel test",
+    "test:watch": "react-vessel test watch",
     "analyze": "react-vessel analyze",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "engines": {
-    "node": ">=8",
+    "node": ">=10",
     "npm": ">=6"
   },
   "dependencies": {
-    "@mornya/drag-selector-libs": "^1.6.0",
-    "@mornya/react-helper": "^0.7.1",
-    "immer": "latest",
+    "@mornya/drag-selector-libs": "^1.6.2",
+    "@mornya/react-helper": "^0.8.0",
+    "immer": "^5.2.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
-    "redux": "^4.0.4",
+    "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/jest-diff": "latest",
-    "@types/node": "^12.12.14",
-    "@types/react": "^16.9.14",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^13.1.6",
+    "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.3",
@@ -54,7 +58,7 @@
     "ts-jest": "latest",
     "tslint": "^5.20.1",
     "tslint-react": "^4.1.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.4"
   },
   "browserslist": [
     ">0.2%",
@@ -83,7 +87,7 @@
   "jest": {
     "transform": {
       ".[t|j]sx?$": "ts-jest",
-      ".(bmp|gif|jpe?g|png|svg|webp|s?css|eot|[t|o]tf|woff2?)$": "jest-transform-stub"
+      ".(bmp|gif|jpe?g|png|svg|tif|webp|s?css|eot|[t|o]tf|woff2?)$": "jest-transform-stub"
     },
     "testRegex": "\\.test\\.[t|j]sx?$",
     "moduleFileExtensions": [
@@ -97,5 +101,8 @@
         "diagnostics": true
       }
     }
+  },
+  "vessel": {
+    "minVersion": "3.0.0"
   }
 }
