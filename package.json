@@ -110,6 +110,6 @@
     }
   },
   "vessel": {
-    "minVersion": "3.0.0"
+    "minVersion": "3.1.0"
   }
 }
