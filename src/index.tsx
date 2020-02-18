@@ -1,6 +1,6 @@
 import ReduxThunk from 'redux-thunk';
 import { Ignite } from '@mornya/react-helper';
-import reducers from './reducers';
+import reducers from '@/reducers';
 
 declare var module: Ignite.IHotNodeModule;
 

@@ -81,7 +81,7 @@ export default class extends React.Component {
                 data-selected={item.isSelected}
               >
                 <div>Item #{index + 1}</div>
-                <div className={`item-flag${item.isSelected ? ' on' : ''}`}>❤️</div>
+                <div className={`item-flag${item.isSelected ? ' on' : ''}`}><span role="img" aria-label="heart">❤️</span></div>
               </div>
             )}
           </div>
@@ -92,7 +92,12 @@ export default class extends React.Component {
           <h2>Drag Selector library</h2>
           <p>This is NPM <code>@mornya/drag-selector-libs</code> sample demo app!</p>
           <br/>
-          <a href="https://npmjs.com/search?q=mornya" target="_blank" title="Go NPM registry">
+          <a
+            href="https://npmjs.com/search?q=mornya"
+            target="_blank"
+            title="Go NPM registry"
+            rel="noopener noreferrer"
+          >
             Go NPM registry
           </a>
           <br/><br/><br/>

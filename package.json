@@ -19,7 +19,7 @@
   "scripts": {
     "login": "react-vessel login",
     "lint": "react-vessel lint",
-    "lint:all": "react-vessel lint all",
+    "lint:fix": "react-vessel lint fix",
     "clean": "react-vessel clean",
     "build": "react-vessel build",
     "start": "react-vessel start",
@@ -35,30 +35,28 @@
     "npm": ">=6"
   },
   "dependencies": {
-    "@mornya/drag-selector-libs": "^1.6.2",
-    "@mornya/react-helper": "^0.8.0",
-    "immer": "^5.2.1",
+    "@mornya/drag-selector-libs": "^1.6.4",
+    "@mornya/react-helper": "^0.8.1",
+    "immer": "^5.3.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-redux": "^7.1.3",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.25",
-    "@types/node": "^13.1.6",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
-    "@types/react-redux": "^7.1.5",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.1",
+    "@types/react": "^16.9.20",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.3",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "jest-transform-stub": "latest",
     "prop-types": "^15.7.2",
-    "ts-jest": "latest",
-    "tslint": "^5.20.1",
-    "tslint-react": "^4.1.0",
-    "typescript": "^3.7.4"
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
   },
   "browserslist": [
     ">0.2%",
@@ -78,24 +76,33 @@
       "xfwd": true
     }
   },
-  "eslintConfig": {
-    "root": false,
-    "env": {
-      "node": true
-    }
-  },
   "jest": {
+    "testURL": "http://localhost",
+    "setupFiles": [
+      "<rootDir>/src/test/@setup.ts"
+    ],
     "transform": {
-      ".[t|j]sx?$": "ts-jest",
-      ".(bmp|gif|jpe?g|png|svg|tif|webp|s?css|eot|[t|o]tf|woff2?)$": "jest-transform-stub"
+      ".([t|j]sx?|mjs)$": "ts-jest",
+      ".(bmp|gif|jpe?g|png|tif|webp|svg|mp4|webm|flac|mp3|wav|ogg|aac|eot|[t|o]tf|woff2?)$": "jest-transform-stub",
+      ".((sa|sc|c|le)ss|styl(us)?)$": "jest-transform-stub"
     },
-    "testRegex": "\\.test\\.[t|j]sx?$",
+    "transformIgnorePatterns": [
+      "node_modules"
+    ],
+    "testRegex": "\\.(test|spec)\\.([t|j]sx?|mjs)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js",
-      "jsx"
+      "jsx",
+      "mjs"
     ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^~/(.*)$": "<rootDir>/src/$1",
+      "^.+.(bmp|gif|jpe?g|png|tif|webp|svg|mp4|webm|flac|mp3|wav|ogg|aac|eot|[t|o]tf|woff2?)$": "jest-transform-stub",
+      "^.+.((sa|sc|c|le)ss|styl(us)?)$": "jest-transform-stub"
+    },
     "globals": {
       "ts-jest": {
         "diagnostics": true
