@@ -15,6 +15,9 @@ const option: Ignite.IOption = {
     reducers,
     initialState: {},
   },
+  serviceWorker: {
+    isUse: process.env.NODE_ENV === 'production',
+  },
 };
 
 Ignite.init(option);
