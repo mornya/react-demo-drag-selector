@@ -1,16 +1,26 @@
-import * as React from 'react'
-import { DragSelector } from '@mornya/drag-selector-libs'
-import '@mornya/drag-selector-libs/dist/drag-selector.scss'
-import './App.scss'
+import React from 'react';
+import { DragSelector, IDragSelector } from '@mornya/drag-selector-libs';
+import '@mornya/drag-selector-libs/dist/drag-selector.scss';
+import './App.scss';
 
-const data = Array(50).fill(null).map(() => ({
+interface IData {
+  name: string;
+  isSelected: boolean;
+}
+
+const data: IData[] = Array(50).fill(null).map(() => ({
   name: 'ITEM',
   isSelected: false,
 }));
 [3, 6, 11, 24, 29, 32, 33, 40, 49].forEach(item => {
-  data[item].name = 'INITIALLY SELECTED ITEM'
-  data[item].isSelected = true
-})
+  data[item].name = 'INITIALLY SELECTED ITEM';
+  data[item].isSelected = true;
+});
+
+interface IState {
+  data: IData[];
+  isActive: boolean;
+}
 
 /**
  * This is an app of entries.
@@ -28,24 +38,24 @@ const data = Array(50).fill(null).map(() => ({
  *   <Route path="/project/:no" component={Project} />
  * </div>
  */
-export default class extends React.Component {
-  ds = null
-  state = {
+export default class App extends React.Component {
+  ds: IDragSelector | null = null;
+  readonly state: IState = {
     data,
     isActive: true,
-  }
+  };
 
-  setAllSelection = (flag) => () => {
+  setAllSelection = (flag: boolean) => () => {
     if (this.ds) {
-      this.ds.setAllSelection(flag)
+      this.ds.setAllSelection(flag);
     }
-  }
+  };
 
   toggleActive = () =>
     this.setState(
       { isActive: !this.state.isActive },
-      () => this.ds.setActive(this.state.isActive)
-    )
+      () => this.ds?.setActive(this.state.isActive),
+    );
 
   componentDidMount () {
     this.ds = new DragSelector('.drag-selector', {
@@ -55,10 +65,10 @@ export default class extends React.Component {
         const mergeData = this.state.data.map((item, index) => ({
           ...item,
           isSelected: data[index],
-        }))
-        this.setState({ data: mergeData }, () => console.log(this.state.data))
-      }
-    })
+        }));
+        this.setState({ data: mergeData }, () => console.log(this.state.data));
+      },
+    });
   }
 
   render () {
@@ -81,8 +91,9 @@ export default class extends React.Component {
                 data-selected={item.isSelected}
               >
                 <div>Item #{index + 1}</div>
-                <div className={`item-flag${item.isSelected ? ' on' : ''}`}><span role="img" aria-label="heart">❤️</span></div>
-              </div>
+                <div className={`item-flag${item.isSelected ? ' on' : ''}`}>
+                  <span role="img" aria-label="heart">❤️</span></div>
+              </div>,
             )}
           </div>
         </section>
@@ -107,12 +118,10 @@ export default class extends React.Component {
           Copyright 2019 by mornya. All rights reserved.
         </footer>
       </div>
-    )
+    );
   }
 
   componentWillUnmount () {
-    if (this.ds) {
-      this.ds.destroy()
-    }
+    this.ds?.destroy();
   }
 }

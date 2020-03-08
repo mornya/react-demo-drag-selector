@@ -8,10 +8,10 @@
       "./types"
     ],
     "types": [
+      "jest",
       "node",
       "react",
-      "react-dom",
-      "jest"
+      "react-dom"
     ],
     "lib": [
       "esnext",
@@ -49,6 +49,7 @@
     "src/**/*"
   ],
   "exclude": [
+    "coverage",
     "public",
     "src/assets",
     "dist",

@@ -7,8 +7,12 @@
 /build
 /out
 /dist
+/tmp
+/temp
+/temporary
+/.env
+/.env.local
 .DS_Store
-.env
 .eslintcache
 
 # Logs
@@ -27,3 +31,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 **/*.iml
+
+# Private keys
+*.key
+*.p12
+*.pem
+*.pfx
+*.csr

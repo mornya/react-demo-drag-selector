@@ -1,6 +1,4 @@
-import ReduxThunk from 'redux-thunk';
 import { Ignite } from '@mornya/react-helper';
-import reducers from '@/reducers';
 
 declare var module: Ignite.IHotNodeModule;
 
@@ -10,13 +8,16 @@ const option: Ignite.IOption = {
     rootElementId: 'app',
     onHotReload: next => module.hot && module.hot.accept('./App', next),
   },
-  store: {
-    middlewares: [ReduxThunk],
-    reducers,
-    initialState: {},
+  router: {
+    isUseBrowserRouter: true,
+    basename: process.env.PUBLIC_URL,
   },
   serviceWorker: {
     isUse: process.env.NODE_ENV === 'production',
+    config: {
+      url: './',
+      file: 'service-worker.js',
+    },
   },
 };
 
