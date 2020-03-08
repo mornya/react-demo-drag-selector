@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{20:function(e,n,o){o(21),e.exports=o(23)},23:function(e,n,o){"use strict";o.r(n),function(e){var n=o(17),r={application:{component:function(){return o.e(3).then(o.bind(null,42))},rootElementId:"app",onHotReload:function(n){return e.hot&&!1}},router:{isUseBrowserRouter:!0,basename:"/react-demo-drag-selector/"},serviceWorker:{isUse:!0,config:{url:"./",file:"service-worker.js"}}};n.Ignite.init(r)}.call(this,o(14)(e))}},[[20,1,2]]]);
+//# sourceMappingURL=app-b58c7b50.js.map
