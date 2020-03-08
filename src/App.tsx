@@ -17,7 +17,9 @@ const data: IData[] = Array(50).fill(null).map(() => ({
   data[item].isSelected = true;
 });
 
-interface IState {
+interface Props {}
+
+interface State {
   data: IData[];
   isActive: boolean;
 }
@@ -38,12 +40,13 @@ interface IState {
  *   <Route path="/project/:no" component={Project} />
  * </div>
  */
-export default class App extends React.Component {
-  ds: IDragSelector | null = null;
-  readonly state: IState = {
+export default class App extends React.Component<Props, State> {
+  readonly state: State = {
     data,
     isActive: true,
   };
+
+  private ds: IDragSelector | null = null;
 
   setAllSelection = (flag: boolean) => () => {
     if (this.ds) {
