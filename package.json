@@ -24,7 +24,7 @@
     "build": "react-vessel build",
     "start": "react-vessel start",
     "serve": "react-vessel start",
-    "dev": "react-vessel dev",
+    "dev": "react-vessel start",
     "test": "react-vessel test",
     "test:watch": "react-vessel test watch",
     "test:coverage": "react-vessel test coverage",
