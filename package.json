@@ -17,17 +17,18 @@
   "bugs": "https://github.com/mornya/react-demo-drag-selector/issues",
   "types": "./types/index.d.ts",
   "scripts": {
-    "login": "react-vessel login",
-    "lint": "react-vessel lint",
-    "lint:fix": "react-vessel lint fix",
+    "postinstall": "lintest install || exit 0",
+    "postuninstall": "lintest install || exit 0",
     "clean": "react-vessel clean",
     "build": "react-vessel build",
     "start": "react-vessel start",
     "serve": "react-vessel start",
     "dev": "react-vessel start",
-    "test": "react-vessel test",
-    "test:watch": "react-vessel test watch",
-    "test:coverage": "react-vessel test coverage",
+    "lint": "lintest lint",
+    "lint:fix": "lintest lint fix",
+    "test": "lintest test",
+    "test:watch": "lintest test watch",
+    "test:coverage": "lintest test coverage",
     "analyze": "react-vessel analyze",
     "analyze:file": "react-vessel analyze file",
     "deploy": "npm run build env:ghpages && echo 'Wait...' && gh-pages -d dist"
@@ -37,22 +38,23 @@
     "npm": ">=6"
   },
   "dependencies": {
-    "@mornya/drag-selector-libs": "^1.6.4",
+    "@mornya/drag-selector-libs": "^1.6.5",
     "@mornya/react-helper": "^0.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.5",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.5",
-    "@types/react-redux": "^7.1.7",
-    "@types/react-router-dom": "^5.1.3",
-    "typescript": "^3.8.3"
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.13",
+    "@types/react": "^16.9.37",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/webpack-env": "^1.15.2",
+    "typescript": "^3.9.5"
   },
   "browserslist": [
     ">0.2%",
@@ -73,6 +75,6 @@
     }
   },
   "vessel": {
-    "minVersion": "3.6.0"
+    "minVersion": "4.0.0"
   }
 }

@@ -7,21 +7,37 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#000000"/>
   <meta name="format-detection" content="telephone=no"/>
   <meta name="theme-color" content="#000000"/>
-  <!-- Begin OpenGraph tags -->
+  <meta name="description" content="<%= process.env.APP_DESCR %>"/>
+  <!-- OpenGraph tags -->
   <meta property="og:type" content="website"/>
   <meta property="og:locale" content="ko_KR"/>
-  <meta property="og:title" content="React App"/>
-  <meta property="og:description" content="My React Application"/>
-  <meta property="og:url" content="https://mornya.com"/>
+  <meta property="og:title" content="<%= process.env.APP_TITLE %>"/>
+  <meta property="og:description" content="<%= process.env.APP_DESCR %>"/>
+  <meta property="og:url" content="https://mornya.github.io/react-demo-drag-selector"/>
   <meta property="og:image" content="https://mornya.com/assets/logo/512.png"/>
-  <meta property="og:site_name" content="mornya.com"/>
-  <!-- End OpenGraph tags -->
-  <title>React Drag Selector Demo</title>
-  <link rel="manifest" href="./manifest.json"/>
-  <link rel="shortcut icon" href="./favicon.ico"/>
+  <meta property="og:site_name" content="mornya.github.io"/>
+  <title><%= process.env.APP_TITLE %></title>
+  <!-- DNS prefetch -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous"/>
+  <!-- Favicon -->
+  <link rel="icon" href="<%= process.env.PUBLIC_URL %>/favicon.ico"/>
+  <link rel="shortcut icon" type="image/ico" href="<%= process.env.PUBLIC_URL %>/favicon.ico"/>
+  <!-- Manifest -->
+  <link rel="manifest" href="<%= process.env.PUBLIC_URL %>/manifest.json"/>
+  <!-- Preloads -->
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700"
+    onload="this.rel='stylesheet'"
+    crossorigin="anonymous"
+  />
 </head>
+
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <noscript>Please enable JavaScript to run this app work properly.</noscript>
   <div id="app"></div>
+  <!-- Bundled files will be auto injected here -->
 </body>
 </html>

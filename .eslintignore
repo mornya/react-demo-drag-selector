@@ -1,15 +1,19 @@
 # Ignoring lint directories and files
 
 # directories
-/.idea
 /coverage
-/node_modules
+/bin
 /dist
+/build
+/node_modules
+/out
 /public
+/static
+/.coverage
+/.git
+/.idea
+/.vscode
 /src/assets
 
 # configuration files
-.eslintrc.js
-babel.config.js
-jest.config.js
-webpack.config.js
+*.config.js
