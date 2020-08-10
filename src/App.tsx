@@ -79,9 +79,9 @@ export default class App extends React.Component<Props, State> {
       <div className="app-wrapper">
         <nav>
           <p>({this.state.data.filter(item => item.isSelected).length} items selected)</p>
-          <button type="button" onClick={this.setAllSelection(true)}>ADD ALL</button>
-          <button type="button" onClick={this.setAllSelection(false)}>SUB ALL</button>
-          <button type="button" onClick={this.toggleActive}>TOGGLE ACTIVE</button>
+          <button type="button" onClick={this.setAllSelection(true)}>Add ALL</button>
+          <button type="button" onClick={this.setAllSelection(false)}>Sub ALL</button>
+          <button type="button" onClick={this.toggleActive}>Toggle Active</button>
           <span>{`${this.state.isActive ? ' Actived' : ' Deactived'}`}</span>
         </nav>
 

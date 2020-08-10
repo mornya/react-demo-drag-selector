@@ -7,7 +7,8 @@
     "react",
     "vessel",
     "demo",
-    "drag-selector"
+    "drag-selector",
+    "front-end"
   ],
   "homepage": "https://mornya.github.io/react-demo-drag-selector",
   "license": "MIT",
@@ -38,23 +39,23 @@
     "npm": ">=6"
   },
   "dependencies": {
+    "@ignitor/core": "^1.0.0",
     "@mornya/drag-selector-libs": "^1.6.5",
-    "@mornya/react-helper": "^0.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.0",
-    "@types/node": "^14.0.13",
-    "@types/react": "^16.9.37",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.45",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@types/webpack-env": "^1.15.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   },
   "browserslist": [
     ">0.2%",
@@ -75,6 +76,6 @@
     }
   },
   "vessel": {
-    "minVersion": "4.0.0"
+    "minVersion": "4.3.0"
   }
 }
