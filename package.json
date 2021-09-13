@@ -1,6 +1,6 @@
 {
   "name": "react-demo-drag-selector",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A demo React.js application for drag selector.",
   "keywords": [
     "mornya",
@@ -16,7 +16,7 @@
   "private": true,
   "repository": "https://github.com/mornya/react-demo-drag-selector",
   "bugs": "https://github.com/mornya/react-demo-drag-selector/issues",
-  "types": "./types/index.d.ts",
+  "types": "./types",
   "scripts": {
     "postinstall": "lintest install || exit 0",
     "postuninstall": "lintest install || exit 0",
@@ -25,37 +25,38 @@
     "start": "react-vessel start",
     "serve": "react-vessel start",
     "dev": "react-vessel start",
-    "lint": "lintest lint",
-    "lint:fix": "lintest lint fix",
-    "test": "lintest test",
-    "test:watch": "lintest test watch",
-    "test:coverage": "lintest test coverage",
+    "deploy": "react-vessel build -p ghpages && echo 'Wait...' && gh-pages -d dist",
+    "check": "react-vessel check",
     "analyze": "react-vessel analyze",
-    "analyze:file": "react-vessel analyze file",
-    "deploy": "npm run build env:ghpages && echo 'Wait...' && gh-pages -d dist"
+    "analyze:file": "react-vessel analyze --file",
+    "lint": "lintest lint",
+    "lint:fix": "lintest lint --fix",
+    "test": "lintest test",
+    "test:watch": "lintest test --watch",
+    "test:coverage": "lintest test --coverage"
   },
   "engines": {
     "node": ">=10",
     "npm": ">=6"
   },
   "dependencies": {
-    "@ignitor/core": "^1.0.0",
+    "@ignitor/core": "^1.0.2",
     "@mornya/drag-selector-libs": "^1.6.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "redux": "^4.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.9",
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.45",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-redux": "^7.1.9",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/webpack-env": "^1.15.2",
-    "typescript": "^3.9.7"
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.1",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/webpack-env": "^1.16.2",
+    "typescript": "^4.4.3"
   },
   "browserslist": [
     ">0.2%",
@@ -76,6 +77,6 @@
     }
   },
   "vessel": {
-    "minVersion": "4.3.0"
+    "minVersion": "5.0.0"
   }
 }

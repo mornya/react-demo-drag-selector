@@ -1,28 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { DragSelector, IDragSelector } from '@mornya/drag-selector-libs';
 import '@mornya/drag-selector-libs/dist/drag-selector.scss';
 import './App.scss';
 
-interface IData {
+type IData = {
   name: string;
   isSelected: boolean;
-}
+};
+type Props = {};
 
-const data: IData[] = Array(50).fill(null).map(() => ({
+const initialData: IData[] = Array(50).fill(null).map(() => ({
   name: 'ITEM',
   isSelected: false,
 }));
+
 [3, 6, 11, 24, 29, 32, 33, 40, 49].forEach(item => {
-  data[item].name = 'INITIALLY SELECTED ITEM';
-  data[item].isSelected = true;
+  initialData[item].name = 'INITIALLY SELECTED ITEM';
+  initialData[item].isSelected = true;
 });
-
-interface Props {}
-
-interface State {
-  data: IData[];
-  isActive: boolean;
-}
 
 /**
  * This is an app of entries.
@@ -40,91 +35,95 @@ interface State {
  *   <Route path="/project/:no" component={Project} />
  * </div>
  */
-export default class App extends React.Component<Props, State> {
-  readonly state: State = {
-    data,
-    isActive: true,
-  };
+const App: React.FC<Props> = (_props: Props) => {
+  const [data, setData] = useState<IData[]>(initialData);
+  const [isActive, setActive] = useState<boolean>(true);
+  const ds = useRef<IDragSelector | null>(null);
 
-  private ds: IDragSelector | null = null;
+  const setAllSelection = useCallback((flag: boolean) => () => {
+    ds.current?.setAllSelection(flag);
+  }, []);
 
-  setAllSelection = (flag: boolean) => () => {
-    if (this.ds) {
-      this.ds.setAllSelection(flag);
+  const toggleActive = useCallback(() => {
+    ds.current?.setActive(!isActive);
+    setActive(!isActive);
+  }, [isActive]);
+
+  useEffect(() => {
+    return () => {
+      ds.current?.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!ds.current) {
+      ds.current = new DragSelector('.drag-selector', {
+        data: data.map(item => item.isSelected),
+        isAllowOverSelection: false,
+        onSelected: (selected) => {
+          const mergeData = data.map((item, index) => ({
+            ...item,
+            isSelected: selected[index],
+          }));
+          setData(mergeData);
+          console.info('Merged data:', mergeData);
+        },
+      });
     }
-  };
+  }, [data]);
 
-  toggleActive = () =>
-    this.setState(
-      { isActive: !this.state.isActive },
-      () => this.ds?.setActive(this.state.isActive),
-    );
+  return (
+    <div className="app-wrapper">
+      <nav>
+        <div>
+          <button type="button" onClick={setAllSelection(true)}>Add ALL</button>
+          <button type="button" onClick={setAllSelection(false)}>Sub ALL</button>
+          <button type="button" onClick={toggleActive}>Toggle Active</button>
+        </div>
+        <div>
+          <p className="sel">({data.filter(item => item.isSelected).length} items selected)</p>
+          <div className="act">{`${isActive ? 'Actived' : 'Deactived'}`}</div>
+        </div>
+      </nav>
 
-  componentDidMount () {
-    this.ds = new DragSelector('.drag-selector', {
-      data: this.state.data.map(item => item.isSelected),
-      isAllowOverSelection: false,
-      onSelected: (data) => {
-        const mergeData = this.state.data.map((item, index) => ({
-          ...item,
-          isSelected: data[index],
-        }));
-        this.setState({ data: mergeData }, () => console.log(this.state.data));
-      },
-    });
-  }
+      <section>
+        <div className="drag-selector">
+          {data.map((item, index) =>
+            <div
+              key={index}
+              className="drag-selector-item"
+              data-selected={item.isSelected}
+            >
+              <div>Item #{index + 1}</div>
+              <div className={`item-flag${item.isSelected ? ' on' : ''}`}>
+                <span role="img" aria-label="heart">❤️</span>
+              </div>
+            </div>,
+          )}
+        </div>
+      </section>
 
-  render () {
-    return (
-      <div className="app-wrapper">
-        <nav>
-          <p>({this.state.data.filter(item => item.isSelected).length} items selected)</p>
-          <button type="button" onClick={this.setAllSelection(true)}>Add ALL</button>
-          <button type="button" onClick={this.setAllSelection(false)}>Sub ALL</button>
-          <button type="button" onClick={this.toggleActive}>Toggle Active</button>
-          <span>{`${this.state.isActive ? ' Actived' : ' Deactived'}`}</span>
-        </nav>
+      <header>
+        <h1>React Demo</h1>
+        <h2>Drag Selector library</h2>
+        <p>This is NPM <code>@mornya/drag-selector-libs</code> sample demo app!</p>
+        <br/>
+        <a
+          href="https://npmjs.com/search?q=mornya"
+          target="_blank"
+          title="Go NPM registry"
+          rel="noopener noreferrer"
+        >
+          Go NPM registry
+        </a>
+        <br/><br/><br/>
+      </header>
 
-        <section>
-          <div className="drag-selector">
-            {this.state.data.map((item, index) =>
-              <div
-                key={index}
-                className="drag-selector-item"
-                data-selected={item.isSelected}
-              >
-                <div>Item #{index + 1}</div>
-                <div className={`item-flag${item.isSelected ? ' on' : ''}`}>
-                  <span role="img" aria-label="heart">❤️</span></div>
-              </div>,
-            )}
-          </div>
-        </section>
+      <footer>
+        Copyright {new Date().getFullYear()}. mornya. All rights reserved.
+      </footer>
+    </div>
+  );
+};
 
-        <header>
-          <h1>React Demo</h1>
-          <h2>Drag Selector library</h2>
-          <p>This is NPM <code>@mornya/drag-selector-libs</code> sample demo app!</p>
-          <br/>
-          <a
-            href="https://npmjs.com/search?q=mornya"
-            target="_blank"
-            title="Go NPM registry"
-            rel="noopener noreferrer"
-          >
-            Go NPM registry
-          </a>
-          <br/><br/><br/>
-        </header>
-
-        <footer>
-          Copyright 2019 by mornya. All rights reserved.
-        </footer>
-      </div>
-    );
-  }
-
-  componentWillUnmount () {
-    this.ds?.destroy();
-  }
-}
+export default App;

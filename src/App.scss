@@ -93,17 +93,26 @@ a:link, a:hover, a:visited {
   }
 
   nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     z-index: 1;
     top: 10px;
-    left: 20px;
-    right: 20px;
+    left: 10px;
+    right: 10px;
     height: 80px;
-    > p {
+
+    p.sel {
+      display: inline-block;
       margin: 4px;
       line-height: 1;
       font-size: 10px;
       color: #61dafb;
+    }
+
+    .act {
+      margin-left: 4px;
     }
   }
 
